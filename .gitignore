@@ -11,12 +11,13 @@ yarn-error.log
 
 # Docker
 .dockerignore
-Dockerfile
 
 # Input and output folders
-input/*
-output/*
+*/input/*
+*/output/*
 
 # Temporary files
 *.swp
 *.swo
+
+*/OpenSfMFix/
