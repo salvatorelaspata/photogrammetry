@@ -2,6 +2,8 @@
 
 ## alicevision/meshroom
 
+> CUDA Required
+
 [alicevision](./alicevision/README.md)
 
 ## colmap
@@ -9,6 +11,8 @@
 Coming soon
 
 ## opensfm
+
+> Docker installation issue
 
 [opensfm](./opensfm/README.md)
 

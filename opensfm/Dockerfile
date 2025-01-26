@@ -49,31 +49,37 @@ RUN git checkout ef872b2399cf1cc036d91e950f210a7be33c2745
 # Now you should be able to build the image from the modified dockerfile in which you should install ceres 2.2 insted ceres 2.0
 
 # Create directory for ceres-solver
-RUN mkdir -p /source/OpenSfM/third_party/ceres-solver/internal/ceres/
-# RUN mkdir -p /source/OpenSfM/third_party/gtest/
+RUN mkdir -p /source/OpenSfM/opensfm/src/third_party/ceres-solver/internal/ceres/
+RUN cp -r opensfm/src/third_party/gtest/* /source/OpenSfM/opensfm/src/third_party/ceres-solver/internal/ceres/
+# RUN cp opensfm/src/third_party/gtest/gmock_gtest_all.cc /source/OpenSfM/opensfm/src/third_party/ceres-solver/internal/ceres/
+# RUN cp opensfm/src/third_party/gtest/gmock_main.cc /source/OpenSfM/opensfm/src/third_party/ceres-solver/internal/ceres/
+# RUN cp opensfm/src/testing_main.cc /source/OpenSfM/opensfm/src/third_party/ceres-solver/internal/ceres/
 
-# Copy the missing files
-RUN cp opensfm/src/third_party/gtest/gmock_gtest_all.cc /source/OpenSfM/third_party/ceres-solver/internal/ceres/
-# RUN cp opensfm/src/third_party/gtest/gmock_gtest_all.cc /source/OpenSfM/third_party/gtest/
+# Create directory for gtest
+RUN mkdir -p /source/OpenSfM/opensfm/src/third_party/gtest/
+RUN cp -r opensfm/src/third_party/gtest/* /source/OpenSfM/opensfm/src/third_party/gtest/
+# RUN cp opensfm/src/third_party/gtest/gmock_gtest_all.cc /source/OpenSfM/opensfm/src/third_party/gtest/
+# RUN cp opensfm/src/third_party/gtest/gmock_main.cc /source/OpenSfM/opensfm/src/third_party/gtest/
+# RUN cp opensfm/src/testing_main.cc /source/OpenSfM/opensfm/src/third_party/gtest/
 
-RUN cp opensfm/src/third_party/gtest/gmock_main.cc /source/OpenSfM/third_party/ceres-solver/internal/ceres/
-# RUN cp opensfm/src/third_party/gtest/gmock_main.cc /source/OpenSfM/third_party/gtest/
-
-RUN cp opensfm/src/testing_main.cc /source/OpenSfM/third_party/ceres-solver/internal/ceres/
-# RUN cp opensfm/src/testing_main.cc /source/OpenSfM/third_party/gtest/
+# Create directory for src
+RUN mkdir -p /source/OpenSfM/opensfm/src/
+RUN cp opensfm/src/third_party/gtest/gmock_gtest_all.cc /source/OpenSfM/opensfm/src/
+RUN cp opensfm/src/third_party/gtest/gmock_main.cc /source/OpenSfM/opensfm/src/
+RUN cp opensfm/src/testing_main.cc /source/OpenSfM/opensfm/src/
 
 # Copy vlfeat to the main repository
+RUN cp -r opensfm/src/third_party/vlfeat/* /source/OpenSfM/opensfm/src/third_party/vlfeat/
 
 WORKDIR /source/OpenSfM
 
-RUN cp -r opensfm/src/third_party/vlfeat /source/OpenSfM/third_party/vlfeat/
 # CMake
-# RUN apt-get install cmake
 # RUN curl -L http://ceres-solver.org/ceres-solver-2.2.0.tar.gz | tar xz && \ 
 #   mkdir ceres-bin && cd ceres-bin && \ 
 #   cmake ../ceres-solver-2.2.0 && \ 
 #   make -j3 && \ 
 #   make install
 
-RUN pip3 install -r requirements.txt && \
-  python3 setup.py build
+RUN pip3 install -r requirements.txt 
+
+RUN python3 setup.py build

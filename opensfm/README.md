@@ -5,3 +5,11 @@ OpenSfM is a Structure from Motion library written in Python on top of OpenCV. I
 ## Issue
 
 [Docker installation](https://github.com/mapillary/OpenSfM/issues/1080)
+
+## Docker
+
+```bash
+docker-compose up --build
+
+docker-compose exec opensfm /bin/bash
+```
