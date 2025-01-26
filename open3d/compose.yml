@@ -1,0 +1,10 @@
+services:
+  open3d-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./input:/source/input
+      - ./output:/source/output
+    ports:
+      - "8888:8888"
