@@ -1,32 +1,39 @@
-import open3d as o3d
-import numpy as np
-import os
-import sys
-def create_3d_model_from_images(input_folder, output_file):
-    # Carica le immagini e crea una lista di RGBD images
-    rgbd_images = []
-    for filename in os.listdir(input_folder):
-        if filename.endswith(".jpg") or filename.endswith(".png"):
-            img_path = os.path.join(input_folder, filename)
-            image = o3d.io.read_image(img_path)
-            # Supponiamo che tu abbia anche la profondità (placeholder)
-            depth = o3d.geometry.Image(np.zeros(image.shape))  # Sostituisci con l'immagine di profondità reale
-            rgbd_image = o3d.geometry.RGBDImage.create_from_color_and_depth(image, depth)
-            rgbd_images.append(rgbd_image)
+# import open3d as o3d
+# import numpy as np
+# import os
+# import sys
 
-    # Creazione della nuvola di punti da RGBD images (placeholder)
-    pcd = o3d.geometry.PointCloud()
-    for rgbd in rgbd_images:
-        # Qui dovresti implementare la logica per convertire RGBD in PointCloud
-        pass  # Placeholder
+# def load_images(folder_path):
+#     images = []
+#     for filename in os.listdir(folder_path):
+#         if filename.endswith(".jpg") or filename.endswith(".png"):
+#             img_path = os.path.join(folder_path, filename)
+#             images.append(img_path)
+#     return images
 
-    # Salva il modello 3D in un file
-    o3d.io.write_point_cloud(output_file, pcd)
-    print(f"Modello 3D salvato in: {output_file}")
+# def create_point_cloud(images):
+#     # Questo esempio è semplificato e richiede ulteriori passaggi per la creazione di un modello 3D preciso
+#     # Utilizza feature detection e matching per trovare punti comuni tra le immagini
+#     # Poi, utilizza la triangolazione per creare una nuvola di punti 3D
+    
+#     # Per semplicità, supponiamo di avere già una nuvola di punti
+#     pcd = o3d.geometry.PointCloud()
+#     pcd.points = o3d.utility.Vector3dVector(np.random.rand(100, 3))  # Esempio di nuvola di punti casuali
+#     return pcd
+
+# def main(folder_path, output_file):
+#     images = load_images(folder_path)
+#     pcd = create_point_cloud(images)
+    
+#     # Visualizza la nuvola di punti
+#     # o3d.visualization.draw_geometries([pcd])
+
+#     # Salva la nuvola di punti in un file
+#     o3d.io.write_point_cloud(output_file, pcd)
 
 
-if __name__ == "__main__":
-    input_folder = sys.argv[1]
-    output_file = sys.argv[2]
+# if __name__ == "__main__":
+#     input_folder = sys.argv[1]
+#     output_file = sys.argv[2]
 
-    create_3d_model_from_images(input_folder, output_file)
+#     main(input_folder, output_file)

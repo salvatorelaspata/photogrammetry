@@ -6,5 +6,6 @@ services:
     volumes:
       - ./input:/source/input
       - ./output:/source/output
-    ports:
-      - "8888:8888"
+    stdin_open: true
+    tty: true
+    entrypoint: /bin/bash
