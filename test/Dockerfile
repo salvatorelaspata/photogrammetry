@@ -3,11 +3,12 @@ FROM alpine:latest
 # Create the directory
 RUN mkdir -p /app/testFolder
 
-# Write a simple file in the directory
-RUN echo "This is a test file" > /app/testFolder/testFile.txt
+# Copia uno script d'avvio nel container
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 
 # Set the working directory
 WORKDIR /app/testFolder
-
-# Default command
-CMD ["tail", "-f","/dev/null"]
+# Comando di default
+CMD ["/entrypoint.sh"]
