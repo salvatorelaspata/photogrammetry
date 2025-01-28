@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "testpython",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

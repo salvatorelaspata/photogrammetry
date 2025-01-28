@@ -1,11 +1,11 @@
 pillow_heif
 
-# torch
-# torchvision
-# opencv-python 
-# pillow
-# rembg 
-# onnxruntime
-# timm
+torch
+torchvision
+opencv-python 
+pillow
+rembg 
+onnxruntime
+timm
 
-# open3d
+open3d

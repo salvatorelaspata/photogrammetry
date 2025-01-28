@@ -6,6 +6,6 @@ services:
     volumes:
       - ./input:/source/input
       - ./output:/source/output
-    stdin_open: true
-    tty: true
-    entrypoint: /bin/bash
+    # stdin_open: true
+    # tty: true
+    # entrypoint: /bin/bash
