@@ -1,5 +1,9 @@
+# flask
+Flask==2.3.2
+psutil
+# heic_to_jpg
 pillow_heif
-
+# depth_map
 torch
 torchvision
 opencv-python 
@@ -7,5 +11,5 @@ pillow
 rembg 
 onnxruntime
 timm
-
+# open3d
 open3d

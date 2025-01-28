@@ -1,2 +1,0 @@
-# heic_to_jpg
-pillow_heif

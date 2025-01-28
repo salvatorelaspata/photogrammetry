@@ -3,9 +3,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    # volumes:
+    #   - ./input:/source/input
+    #   - ./output:/source/output
     volumes:
-      - ./input:/source/input
-      - ./output:/source/output
+      - .:/app
     # stdin_open: true
     # tty: true
     # entrypoint: /bin/bash
+    ports:
+      - "5001:5001"
+    environment:
+      FLASK_ENV: development

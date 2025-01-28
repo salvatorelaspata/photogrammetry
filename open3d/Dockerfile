@@ -12,12 +12,14 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   python3-opencv \
   && rm -rf /var/lib/apt/lists/*
 
-COPY ./src /source/src
+WORKDIR /app
 
-COPY ./requirements.txt /source/requirements.txt
+COPY requirements.txt .
 
-COPY ./entrypoint.sh /source/entrypoint.sh
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN chmod +x /source/entrypoint.sh
+COPY . .
 
-CMD ["/source/entrypoint.sh"]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5001", "--reload"]
+
+
