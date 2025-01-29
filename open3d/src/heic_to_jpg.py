@@ -3,25 +3,26 @@ import pillow_heif
 import os
 import sys
 
-def heic_to_jpg(input_path, output_path):
-  """Converte un'immagine HEIC in JPG.
 
-  Args:
-    input_path: Il percorso del file HEIC.
-    output_path: Il percorso del file JPG di output.
-  """
-  try:
-    heif_file = pillow_heif.read_heif(input_path)
-    image = Image.frombytes(
-        heif_file.mode,
-        heif_file.size,
-        heif_file.data,
-        "raw",
-    )
-    image.save(output_path, "JPEG")
-    print(f"Convertito {input_path} in {output_path}")
-  except Exception as e:
-    print(f"Errore durante la conversione di {input_path}: {e}")
+def heic_to_jpg(input_path, output_path):
+    """Converte un'immagine HEIC in JPG.
+
+    Args:
+      input_path: Il percorso del file HEIC.
+      output_path: Il percorso del file JPG di output.
+    """
+    try:
+        heif_file = pillow_heif.read_heif(input_path)
+        image = Image.frombytes(
+            heif_file.mode,
+            heif_file.size,
+            heif_file.data,
+            "raw",
+        )
+        image.save(output_path, "JPEG")
+        print(f"Convertito {input_path} in {output_path}")
+    except Exception as e:
+        print(f"Errore durante la conversione di {input_path}: {e}")
 
 
 def convert_heic_files_in_directory(input_dir, output_dir):
@@ -40,6 +41,15 @@ def convert_heic_files_in_directory(input_dir, output_dir):
             output_filename = os.path.splitext(filename)[0] + ".jpg"
             output_path = os.path.join(output_dir, output_filename)
             heic_to_jpg(input_path, output_path)
+
+
+def convert_single_file(input_path, output_dir):
+    """Wrapper per heic_to_jpg"""
+    output_filename = os.path.splitext(os.path.basename(input_path))[0] + ".jpg"
+    output_path = os.path.join(output_dir, output_filename)
+    heic_to_jpg(input_path, output_path)
+    return output_path
+
 
 if __name__ == "__main__":
     input_folder = sys.argv[1]
