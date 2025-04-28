@@ -31,11 +31,8 @@ def remove_bg_from_directory(input_dir, output_dir):
     i = 1
     for image_file in image_files:
         try:
-
             input_path = os.path.join(input_dir, image_file)
             output_path = os.path.join(output_dir, image_file + ".png")
-            # logger.info(f"Input path {input_path}")
-            # logger.info(f"Output path {output_path}")
             # Carica l'immagine
             input_image = Image.open(input_path)
             logger.info(f"Processing {input_path}")

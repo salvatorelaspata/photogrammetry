@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   python3-pip \  
   libopencv-dev \
   python3-opencv \
+  libtbb-dev \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app

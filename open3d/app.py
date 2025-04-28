@@ -69,6 +69,7 @@ def upload_images():
     logger.info("convert heic files in directory")
     remove_bg.remove_bg_from_directory(folder_original_jpg, folder_no_background)
     logger.info("remove bg from directory")
+    # time execitopm
     depth_map.process_images(folder_original_jpg, folder_depth_map)
     logger.info("process images")
 
